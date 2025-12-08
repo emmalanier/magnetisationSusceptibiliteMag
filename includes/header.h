@@ -10,22 +10,64 @@
 #include <fstream>
 #include <cmath>
 #include <vector>
+#include <functional>
 
 //CLASSES//
 
-class magnetisation : public//classe d'integ
+class integrationFonctions
+{
+  protected :
+
+  public :
+};
+
+class valeurNulle
+{
+  protected :
+    double precisionZero;
+
+  public :
+    valeurNulle();
+    valeurNulle(double);
+
+    double get_precisionZero();
+
+    void set_precisionZero();
+};
+
+class magnetisation : public integrationFonctions, public valeurNulle
 {
   private :
     double h;
     double g;
     double taille;
+    double precision;
+    double temperature;
     double magnetisation;
     double magnetisationInter;
 
   public :
     magnetisation();
-    magnetisation(double, double, double);
     magnetisation(double, double, double, double, double);
+    magnetisation(double, double, double, double, double, double, double);
+
+    double get_h();
+    double get_g();
+    double get_taille();
+    double get_precision();
+    double get_temperature();
+    double get_magnetisation();
+    double get_magnetisationInter();
+
+    void set_h(double);
+    void set_g(double);
+    void set_taille(double);
+    void set_precision(double);
+    void set_temperature(double);
+    void set_magnetisation(double);
+    void set_magnetisationInter(double);
+
+    double calculTemperature();
 
 };
 
