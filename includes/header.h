@@ -61,7 +61,7 @@ class valeurNulle
 
     double get_precisionZero();
 
-    void set_precisionZero();
+    void set_precisionZero(double);
 
     virtual double calculFonction();
 
