@@ -11,14 +11,43 @@
 #include <cmath>
 #include <vector>
 #include <functional>
+#include <string>
 
 //CLASSES//
 
 class integrationFonctions
 {
   protected :
+    std::string methode;
+    
+    double borneInf;
+    double borneSup;
+    double precisionInteg;
+
+    function<double(double)> fonctionInteg;
 
   public :
+    integrationFonctions();
+    integrationFonctions(std::string, double, double, double);
+
+    std::string get_methode();
+
+    double get_borneInf();
+    double get_borneSup();
+    double get_precisionInteg();
+
+    function<double(double)> get_fonction();
+
+    void set_methode(std::string);
+
+    void set_borneInf(double);
+    void set_borneSup(double);
+    void set_precisionInteg(double);
+
+    void set_fonction(function<double(double)>);
+
+    double trapezeIntegration();
+    double rectangleIntegration();
 };
 
 class valeurNulle
@@ -33,6 +62,11 @@ class valeurNulle
     double get_precisionZero();
 
     void set_precisionZero();
+
+    virtual double calculFonction();
+
+    double calculZero1();
+    double calculZero2();
 };
 
 class magnetisation : public integrationFonctions, public valeurNulle

@@ -1,0 +1,16 @@
+/////////////////////////////////
+//MAGNETISATION - MAGNETISATION//
+/////////////////////////////////
+
+#include "header.h"
+
+//CONSTRUCTEURS//
+
+
+//GETTEURS//
+
+
+//SETTEURS//
+
+
+//AUTRES METHODES PUBLIQUES//
