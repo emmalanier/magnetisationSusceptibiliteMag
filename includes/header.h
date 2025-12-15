@@ -63,7 +63,7 @@ class racine
 
     void set_precisionZero(double);
 
-    virtual double calculFonction();
+    virtual double calculRacineFonction();
 
     double racineBissection();
     double calculZero2();
