@@ -116,4 +116,14 @@ void magnetisation::set_magnetisationInter(double magI)
 
 //AUTRES METHODES PUBLIQUES//
 
-double magnetisation::calculTemperature();
+double magnetisation::calculInter(double k)
+{
+  double results;
+  double k2 = k*k;
+  double mag2 = magnetisation*magnetisation;
+  double calculInter = sqrt(k2+mag2);
+
+  results = (k2/(4.0*M_PI*M_PI))*(magnetisation/calculInter)*(tanh(calcultInter/temperature));
+
+  return results ;
+}

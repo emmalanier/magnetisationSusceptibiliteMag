@@ -50,14 +50,14 @@ class integrationFonctions
     double rectangleIntegration();
 };
 
-class valeurNulle
+class racine
 {
   protected :
     double precisionZero;
 
   public :
-    valeurNulle();
-    valeurNulle(double);
+    racine();
+    racine(double);
 
     double get_precisionZero();
 
@@ -65,7 +65,7 @@ class valeurNulle
 
     virtual double calculFonction();
 
-    double calculZero1();
+    double racineBissection();
     double calculZero2();
 };
 
@@ -101,7 +101,7 @@ class magnetisation : public integrationFonctions, public valeurNulle
     void set_magnetisation(double);
     void set_magnetisationInter(double);
 
-    double calculTemperature();
+    double calculInter(double);
 
 };
 
