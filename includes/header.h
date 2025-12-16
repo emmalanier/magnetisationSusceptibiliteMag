@@ -24,7 +24,7 @@ class integrationFonctions
     double borneSup;
     double precisionInteg;
 
-    function<double(double)> fonctionInteg;
+    std::function<double(double)> fonctionInteg;
 
   public :
     integrationFonctions();
@@ -36,7 +36,7 @@ class integrationFonctions
     double get_borneSup();
     double get_precisionInteg();
 
-    function<double(double)> get_fonction();
+    std::function<double(double)> get_fonction();
 
     void set_methode(std::string);
 
@@ -44,7 +44,7 @@ class integrationFonctions
     void set_borneSup(double);
     void set_precisionInteg(double);
 
-    void set_fonction(function<double(double)>);
+    void set_fonction(std::function<double(double)>);
 
     double trapezeIntegration();
     double rectangleIntegration();
@@ -63,13 +63,13 @@ class racine
 
     void set_precisionZero(double);
 
-    virtual double calculRacineFonction();
+    virtual double calculRacineFonction(double);
 
     double racineBissection();
     double calculZero2();
 };
 
-class magnetisation : public integrationFonctions, public valeurNulle
+class magnetisation : public integrationFonctions, public racine
 {
   private :
     double h;
@@ -77,7 +77,7 @@ class magnetisation : public integrationFonctions, public valeurNulle
     double taille;
     double precision;
     double temperature;
-    double magnetisation;
+    double magnetisationVal;
     double magnetisationInter;
 
   public :
@@ -90,7 +90,7 @@ class magnetisation : public integrationFonctions, public valeurNulle
     double get_taille();
     double get_precision();
     double get_temperature();
-    double get_magnetisation();
+    double get_magnetisationVal();
     double get_magnetisationInter();
 
     void set_h(double);
@@ -98,10 +98,11 @@ class magnetisation : public integrationFonctions, public valeurNulle
     void set_taille(double);
     void set_precision(double);
     void set_temperature(double);
-    void set_magnetisation(double);
+    void set_magnetisationVal(double);
     void set_magnetisationInter(double);
 
     double calculInter(double);
+    double calculRacineFonction(double);
 
 };
 

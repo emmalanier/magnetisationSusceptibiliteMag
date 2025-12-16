@@ -45,7 +45,7 @@ double integrationFonctions::get_precisionInteg()
   return precisionInteg;
 }
   
-function<double(double)> integrationFonctions::get_fonction()
+std::function<double(double)> integrationFonctions::get_fonction()
 {
   return fonctionInteg;
 }
@@ -74,7 +74,7 @@ void integrationFonctions::set_precisionInteg(double p)
   precisionInteg = p;
 }
   
-void integrationFonctions::set_fonction(function<double(double)> f)
+void integrationFonctions::set_fonction(std::function<double(double)> f)
 {
   fonctionInteg = f;
 }
@@ -87,10 +87,10 @@ double integrationFonctions::rectangleIntegration()
   //NOTE : precision stands for the number of iterations the algorithm will do. The higher the precision, the more
   //accurate the result, but the longer the run time. A lower precision will likely give less accurate results, but
   //the runtime will be shorter
-  double size = highestPoint - lowestPoint;
-  double step = size/precision ;
+  double size = borneSup - borneInf;
+  double step = size/precisionInteg ;
   double results = 0.0;
-  double a = lowestPoint;
+  double a = borneInf;
   double functionEval = 0.0;
   double rectangleArea = 0.0;
 
@@ -98,7 +98,7 @@ double integrationFonctions::rectangleIntegration()
   for(int i = 0; i<=step ; i++)
     {
       a+=step;
-      functionEval = f(a);
+      functionEval = fonctionInteg(a);
       rectangleArea = functionEval*step;
       results+=rectangleArea;
     }
@@ -111,10 +111,10 @@ double integrationFonctions::trapezeIntegration()
   //NOTE : precision stands for the number of iterations the algorithm will do. The higher the precision, the more
   //accurate the result, but the longer the run time. A lower precision will likely give less accurate results, but
   //the runtime will be shorter
-  double size = highestPoint - lowestPoint;
-  double step = size/precision ;
+  double size = borneSup - borneInf;
+  double step = size/precisionInteg ;
   double results = 0.0;
-  double a = lowestPoint;
+  double a = borneInf;
   double functionEval1 = 0.0;
   double functionEval2 = 0.0;
   double area = 0.0;
@@ -123,8 +123,8 @@ double integrationFonctions::trapezeIntegration()
   for(int i = 0; i<step ; i++)
     {
       a+=step;
-      functionEval1 = f(a);
-      functionEval2 = f(a+step);
+      functionEval1 = fonctionInteg(a);
+      functionEval2 = fonctionInteg(a+step);
       area = ((functionEval1 + functionEval2)*step)/2.0;
       results+=area;
     }

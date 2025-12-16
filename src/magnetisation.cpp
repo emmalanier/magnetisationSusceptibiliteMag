@@ -13,7 +13,7 @@ magnetisation::magnetisation()
   taille = 0.0;
   precision = 0.0;
   temperature = 0.0;
-  magnetisation = 0.0;
+  magnetisationVal = 0.0;
   magnetisationInter = 0.0;
 }
 
@@ -33,7 +33,7 @@ magnetisation::magnetisation(double h2, double g2, double t, double p, double te
   taille = t;
   precision = p;
   temperature = temp;
-  magnetisation = mag;
+  magnetisationVal = mag;
   magnetisationInter = magI;
 }
 
@@ -65,9 +65,9 @@ double magnetisation::get_temperature()
   return temperature;
 }
 
-double magnetisation::get_magnetisation()
+double magnetisation::get_magnetisationVal()
 {
-  return magnetisation;
+  return magnetisationVal;
 }
 
 double magnetisation::get_magnetisationInter()
@@ -103,9 +103,9 @@ void magnetisation::set_temperature(double temp)
   temperature = temp;
 }
 
-void magnetisation::set_magnetisation(double mag)
+void magnetisation::set_magnetisationVal(double mag)
 {
-  magnetisation = mag;
+  magnetisationVal = mag;
 }
 
 void magnetisation::set_magnetisationInter(double magI)
@@ -120,10 +120,15 @@ double magnetisation::calculInter(double k)
 {
   double results;
   double k2 = k*k;
-  double mag2 = magnetisation*magnetisation;
+  double mag2 = magnetisationVal*magnetisationVal;
   double calculInter = sqrt(k2+mag2);
 
-  results = (k2/(4.0*M_PI*M_PI))*(magnetisation/calculInter)*(tanh(calcultInter/temperature));
+  results = (k2/(4.0*M_PI*M_PI))*(magnetisationVal/calculInter)*(tanh(calculInter/temperature));
 
   return results ;
+}
+
+double magnetisation::calculRacineFonction(double x)
+{
+  return x;
 }

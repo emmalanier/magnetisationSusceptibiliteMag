@@ -35,7 +35,7 @@ void racine::set_precisionZero(double p)
   
 //AUTRES METHODES PUBLIQUES//
 
-virtual double racine::calculRacineFonction()
+double racine::calculRacineFonction(double d)
 {
   return 0.0;
 }
@@ -55,15 +55,15 @@ double racine::racineBissection()
       do
         {
           milieu = (neg+pos)/2.0;
-          fNeg = calculeRacineFonction(neg);
-          fPos = calculeRacineFonction(pos);
-          fMilieu = calculeRacineFonction(milieu);
+          fNeg = calculRacineFonction(neg);
+          fPos = calculRacineFonction(pos);
+          fMilieu = calculRacineFonction(milieu);
 
           if(fMilieu<=0)
             neg = milieu;
           else
             pos = milieu;
-        }while(fMilieu >= 0.0+precisionZero || fMilieu <= 0.0-precisionZero)
+        }while(fMilieu >= 0.0+precisionZero || fMilieu <= 0.0-precisionZero);
     }
 
   results = milieu;
@@ -72,4 +72,7 @@ double racine::racineBissection()
 
 }
 
-double racine::calculZero2();
+double racine::calculZero2()
+{
+  return 0.0;
+}
